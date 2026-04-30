@@ -19,9 +19,9 @@ function siguientePantalla(n) {
     // --- EL TRUCO ESTÁ AQUÍ ---
     if (n === 4) {
       // Si entramos a la pantalla 4, esperamos un segundo y arrancamos las letras
-      setTimeout(iniciarTexto, 500); 
+      setTimeout(iniciarTexto, 500);
     }
-    
+
     if (n === 5) {
       // Si entramos a la 5, activamos el contador de días
       setInterval(actualizarContador, 1000);
@@ -185,7 +185,7 @@ Empezamos siendo dos tormentas que chocaban, con temperamentos iguales y miedos 
 Perdimos la cuenta de las veces que las lágrimas ganaron y de los momentos en que parecía que el orgullo nos separaría.\n\n` +
     `Pero tú, que decías que nunca buscarías a nadie, terminaste siendo la razón por la que yo decidí cambiarlo todo. \n\n
 Dejé atrás las noches vacías por la paz de despertar a tu lado. Cambié mi mundo porque entendí que ningún lugar es mejor que nuestro hogar.\n\n` +
-    `Hoy, ver nuestro apartamento amueblado con esfuerzo, nuestras cosas compradas a pulso y saber que somos equipo, en cada fiesta familiar y en cada viaje, es mi mayor orgullo. \n\n` +
+    `Hoy, ver nuestro hogar, construyéndolo con esfuerzo, nuestras cosas compradas a pulso y saber que somos equipo, en cada fiesta familiar y en cada viaje, es mi mayor orgullo. \n\n` +
     `Gracias por no rendirte cuando éramos difíciles, por ayudarme a ser mi mejor versión y por construir este "nosotros" que hoy es inquebrantable. \n\n` +
     `Te amo para siempre. ❤️`;
 
@@ -231,7 +231,29 @@ function finishMessage() {
 
 function cerrarProyecto() {
   console.log("Botón finalizar presionado");
+
+  // --- DETENER LA MÚSICA ---
+  const audio = document.getElementById("backgroundAudio");
+  if (audio) {
+    // Bajamos el volumen gradualmente para que no sea un corte brusco
+    let vol = audio.volume;
+    const fadeOut = setInterval(() => {
+      if (vol > 0.05) {
+        vol -= 0.05;
+        audio.volume = vol;
+      } else {
+        clearInterval(fadeOut);
+        audio.pause(); // Detiene la reproducción
+        audio.currentTime = 0; // Reinicia la canción al segundo 0
+      }
+    }, 100);
+  }
+
+  // Mensaje final
   alert("Eres mi mejor decisión, hoy y siempre. ❤️");
+
+  // Opcional: Si quieres que la página se reinicie o se cierre
+  // window.location.reload(); 
 }
 
 // --- SISTEMA DE PARTÍCULAS ---
