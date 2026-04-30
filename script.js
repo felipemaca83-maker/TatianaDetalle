@@ -288,7 +288,7 @@ function actualizarContador() {
   // Formato de salida
   const contadorHTML = `
         <div class="contador-container">
-            <span class="dias-grande">${dias} días juntos.</span>
+            <span class="dias-grande">${dias} días</span>
             <div class="tiempo-detalle">
                 ${horas}h ${minutos}m ${segundos}s
             </div>
