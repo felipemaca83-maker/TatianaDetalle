@@ -87,6 +87,8 @@ document.querySelectorAll(".carrusel-seccion").forEach(seccion => {
       // 2. Definimos los textos por sección
       const textosPorSeccion = {
         "1": [
+          "✨",
+          "💋",
           "Esas primeras noches donde el mundo se detenía entre luces y música. ✨", // Foto 1: Beso discoteca
           "Nuestra complicidad siempre fue nuestra mejor cara. 🤪",                 // Foto 2: Caritas discoteca
           "Repitiendo lugares, pero creando momentos totalmente nuevos.",          // Foto 3: Discoteca otra fecha
