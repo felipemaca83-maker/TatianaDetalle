@@ -168,22 +168,24 @@
       </div>
     </section>
 
-<!-- SECCIÓN 3: EL VIDEO -->
-    <section class="carrusel-seccion" data-seccion="3">
-      <p class="glow-title">Un momento especial</p>
+<!-- SECCIÓN 3: EL VIDEO (Muteado) -->
+<section class="carrusel-seccion" data-seccion="3">
+<p class="glow-title" style="font-size: 1.8rem; line-height: 1.2;">
+    Bajo el cielo de Cartagena... <br>
+    el inicio de nuestro "Para Siempre". ✨
+  </p>
 
-      <div class="video-contenedor-especial">
-        <!-- Quitamos el autoplay para que ella le de Play o lo controlamos por JS -->
-        <video id="videoIntermedio" playsinline controls style="width: 100%; border-radius: 15px;">
-          <source src="pictures/propuesta.MP4" type="video/mp4">
-        </video>
-        
-        <!-- Agregamos el onclick manual para asegurar que funcione -->
-        <button id="btnVideoSiguiente" class="btn-generic" onclick="avanzarALaSeccion4()" style="display: none; margin-top: 20px;">
-          Continuar a nuestro último capítulo... ✍🏼
-        </button>
-      </div>
-    </section>
+  <div class="video-contenedor-especial">
+    <!-- Agregamos 'muted' y quitamos 'controls' si quieres que se vea más limpio -->
+    <video id="videoIntermedio" playsinline muted style="width: 100%; border-radius: 15px;">
+      <source src="pictures/propuesta.MP4" type="video/mp4">
+    </video>
+    
+    <button id="btnVideoSiguiente" class="btn-generic" onclick="avanzarALaSeccion4()" style="display: none; margin-top: 20px;">
+      Antes de terminar...
+    </button>
+  </div>
+</section>
     
   </div>
   <div class="pantalla" id="pantalla4">
