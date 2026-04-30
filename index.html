@@ -169,23 +169,19 @@
     </section>
 
     <section class="carrusel-seccion" data-seccion="3">
-      <p class="glow-title" style="font-size: 1.8rem; line-height: 1.2;">
-        Bajo el cielo de Cartagena... <br>
-        el inicio de nuestro "Para Siempre". ✨
-      </p>
-          <!-- <button class="btn-generic" onclick="irAlFinal()">Antes de terminar...</button> -->
+      <p class="glow-title">Un momento especial</p>
 
       <div class="video-contenedor-especial">
-        <video id="videoIntermedio" playsinline muted style="width: 100%; border-radius: 15px;">
+        <!-- Quitamos el autoplay para que ella le de Play o lo controlamos por JS -->
+        <video id="videoIntermedio" playsinline controls style="width: 100%; border-radius: 15px;">
           <source src="pictures/propuesta.MP4" type="video/mp4">
         </video>
-
-        <button id="btnVideoSiguiente" class="btn-generic" onclick="avanzarALaSeccion4()"
-          style="display: none; margin-top: 20px;">
-          Antes de terminar...
+        
+        <!-- Agregamos el onclick manual para asegurar que funcione -->
+        <button id="btnVideoSiguiente" class="btn-generic" onclick="avanzarALaSeccion4()" style="display: none; margin-top: 20px;">
+          Continuar a nuestro último capítulo... ✍🏼
         </button>
       </div>
-      
     </section>
 
   </div>
