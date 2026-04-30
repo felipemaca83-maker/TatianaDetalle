@@ -157,14 +157,8 @@ if (videoIntermedio) {
 
 // 2. Función para saltar del video a las fotos finales
 function avanzarALaSeccion4() {
-    // Ocultamos la sección 3
-    document.querySelector('[data-seccion="3"]').classList.remove('visible');
-    // Mostramos la sección 4
-    const seccion4 = document.querySelector('[data-seccion="4"]');
-    seccion4.classList.add('visible');
-    
-    // Pausamos el video por si acaso seguía sonando algo
-    videoIntermedio.pause();
+    videoIntermedio.pause(); // Detenemos el video
+    siguientePantalla(4);    // Saltamos a la pantalla de la carta
 }
 
 // --- TRANSICIÓN A PANTALLA FINAL (VIDEO) ---
