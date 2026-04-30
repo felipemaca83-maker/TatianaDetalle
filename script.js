@@ -77,29 +77,29 @@ document.querySelectorAll(".carrusel-seccion").forEach(seccion => {
       // 2. Definimos los textos por sección
       const textosPorSeccion = {
         "1": [
-    "Esas primeras noches donde el mundo se detenía entre luces y música. ✨", // Foto 1: Beso discoteca
-    "Nuestra complicidad siempre fue nuestra mejor cara. 🤪",                 // Foto 2: Caritas discoteca
-    "Repitiendo lugares, pero creando momentos totalmente nuevos.",          // Foto 3: Discoteca otra fecha
-    "Gozando de fiestas y risas, con el corazón más feliz que nunca. 🎤", // Foto 4: Concierto/Feria
-    "Tu espejo sabe bien cuántas sonrisas me robaste desde el principio. 🤳✨", // Foto 5: Espejo habitación
-    "Citas sencillas, hamburguesas y la mejor compañía del universo.",       // Foto 6: Restaurante
-    "Nuestro primer cierre de año... y el inicio de nuestra vida juntos. ❤️"        // Foto 7: Primer 31 de diciembre
-],
+          "Esas primeras noches donde el mundo se detenía entre luces y música. ✨", // Foto 1: Beso discoteca
+          "Nuestra complicidad siempre fue nuestra mejor cara. 🤪",                 // Foto 2: Caritas discoteca
+          "Repitiendo lugares, pero creando momentos totalmente nuevos.",          // Foto 3: Discoteca otra fecha
+          "Gozando de fiestas y risas, con el corazón más feliz que nunca. 🎤", // Foto 4: Concierto/Feria
+          "Tu espejo sabe bien cuántas sonrisas me robaste desde el principio. 🤳✨", // Foto 5: Espejo habitación
+          "Citas sencillas, hamburguesas y la mejor compañía del universo.",       // Foto 6: Restaurante
+          "Nuestro primer cierre de año... y el inicio de nuestra vida juntos. ❤️"        // Foto 7: Primer 31 de diciembre
+        ],
         "2": [
-    "Celebrar mi vida fue el mejor regalo que me dio ese año. 🎂",             // Foto 1: Cumpleaños de él
-    "Un año más para ti, pero esta vez, con el amor de mi vida al lado. ✨",          // Foto 2: Cumpleaños de ella
-    "Bajo el calor del Valle, descubriendo que cualquier lugar es perfecto contigo.", // Foto 3: Cali
-    "Otro diciembre sumando momentos y brindando por nosotros. 🥂",           // Foto 4: Segundo diciembre
-    "Cruzando fronteras y coleccionando sellos en el corazón. 🇪🇨",            // Foto 5: Límite Ecuador
-    "Aventureros por naturaleza, cómplices por elección.",                    // Foto 6: Ecuador
-    "Caminando la capital, sintiendo que el frío de Bogotá no existía si me dabas la mano. 🏙️", // Foto 7: Bogotá Plaza
-    "Tocando el cielo en Monserrate, pero sintiendo los pies en la tierra porque estaba a tu lado. ✨",
-    "Momentos que se vuelven hogar, compartiendo lo que más queremos. 🏡",      // Foto 9: Selfie con los suegros (campo)
-    "Tú, yo y la paz de estar donde pertenecemos. ❤️",                        // Foto 10: Selfie solos (campo)
-    "Donde el mar nos susurró que esto era para siempre. 🌊",                  // Foto 11: Playa Tumaco
-    "Besos con sabor a sal y arena, en nuestro paraíso personal. 💋",          // Foto 12: Beso Tumaco
-    "Cerrando capítulos en el lago Calima, agradecido por cada aventura a tu lado. ⛵" // Foto 13: Lago Calima
-],
+          "Celebrar mi vida fue el mejor regalo que me dio ese año. 🎂",             // Foto 1: Cumpleaños de él
+          "Un año más para ti, pero esta vez, con el amor de mi vida al lado. ✨",          // Foto 2: Cumpleaños de ella
+          "Bajo el calor del Valle, descubriendo que cualquier lugar es perfecto contigo.", // Foto 3: Cali
+          "Otro diciembre sumando momentos y brindando por nosotros. 🥂",           // Foto 4: Segundo diciembre
+          "Cruzando fronteras y coleccionando sellos en el corazón. 🇪🇨",            // Foto 5: Límite Ecuador
+          "Aventureros por naturaleza, cómplices por elección.",                    // Foto 6: Ecuador
+          "Caminando la capital, sintiendo que el frío de Bogotá no existía si me dabas la mano. 🏙️", // Foto 7: Bogotá Plaza
+          "Tocando el cielo en Monserrate, pero sintiendo los pies en la tierra porque estaba a tu lado. ✨",
+          "Momentos que se vuelven hogar, compartiendo lo que más queremos. 🏡",      // Foto 9: Selfie con los suegros (campo)
+          "Tú, yo y la paz de estar donde pertenecemos. ❤️",                        // Foto 10: Selfie solos (campo)
+          "Donde el mar nos susurró que esto era para siempre. 🌊",                  // Foto 11: Playa Tumaco
+          "Besos con sabor a sal y arena, en nuestro paraíso personal. 💋",          // Foto 12: Beso Tumaco
+          "Cerrando capítulos en el lago Calima, agradecido por cada aventura a tu lado. ⛵" // Foto 13: Lago Calima
+        ],
         "3": [
           "Y por fin, el 'nosotros' se hizo oficial ante el mundo... 🥂",          // Foto 1: Beso restaurante
           "Ver tu sonrisa iluminarse con ese detalle fue mi mejor regalo. 💐",    // Foto 2: Ella con flores
@@ -143,43 +143,58 @@ document.querySelectorAll(".carrusel-seccion").forEach(seccion => {
   }
 });
 
-// 1. Detectar cuando termina el video
+// --- LÓGICA DEL VIDEO DE PROPUESTA ---
 const videoIntermedio = document.getElementById('videoIntermedio');
 const btnVideoSiguiente = document.getElementById('btnVideoSiguiente');
 
 if (videoIntermedio) {
-    videoIntermedio.onended = function() {
-        btnVideoSiguiente.style.display = "block";
-        // Opcional: scroll automático hacia el botón para que lo vea
-        btnVideoSiguiente.scrollIntoView({ behavior: 'smooth' });
-    };
+  // Cuando el video termine, muestra el botón
+  videoIntermedio.onended = function () {
+    btnVideoSiguiente.style.display = "block";
+    btnVideoSiguiente.scrollIntoView({ behavior: 'smooth' });
+  };
 }
 
-// 2. Función para saltar del video a las fotos finales
+// Función única para saltar a la carta
 function avanzarALaSeccion4() {
-    videoIntermedio.pause(); // Detenemos el video
-    siguientePantalla(4);    // Saltamos a la pantalla de la carta
+  if (videoIntermedio) videoIntermedio.pause();
+  siguientePantalla(4); 
 }
 
-// --- TRANSICIÓN A PANTALLA FINAL (VIDEO) ---
-function irAlFinal() {
-  document.getElementById('pantalla3').style.display = 'none';
-  const p4 = document.getElementById('pantalla4');
-  p4.classList.add('activa');
-  p4.style.display = 'flex';
-  iniciarTexto();
+// Modifica tu función siguientePantalla para que inicie la carta y el contador
+function siguientePantalla(n) {
+  const actuales = document.querySelectorAll('.pantalla');
+  actuales.forEach(p => {
+    p.classList.remove('activa');
+    p.style.display = 'none';
+  });
+
+  const proxima = document.getElementById('pantalla' + n);
+  if (proxima) {
+    proxima.classList.add('activa');
+    proxima.style.display = 'flex';
+    
+    // Si entramos a la pantalla 4, arranca la máquina de escribir
+    if (n === 4) {
+      iniciarTexto();
+    }
+    // Si entramos a la pantalla 5, arranca el contador
+    if (n === 5) {
+      setInterval(actualizarContador, 1000);
+    }
+  }
 }
 
 // --- EFECTO MÁQUINA DE ESCRIBIR ---
 function iniciarTexto() {
-const messageText = `Mirar atrás es ver cuánto hemos construido. \n\n
+  const messageText = `Mirar atrás es ver cuánto hemos construido. \n\n
 Empezamos siendo dos tormentas que chocaban, con temperamentos iguales y miedos que a veces nos hacían dudar. \n\n
 Perdimos la cuenta de las veces que las lágrimas ganaron y de los momentos en que parecía que el orgullo nos separaría.\n\n` +
-`Pero tú, que decías que nunca buscarías a nadie, terminaste siendo la razón por la que yo decidí cambiarlo todo. \n\n
+    `Pero tú, que decías que nunca buscarías a nadie, terminaste siendo la razón por la que yo decidí cambiarlo todo. \n\n
 Dejé atrás las noches vacías por la paz de despertar a tu lado. Cambié mi mundo porque entendí que ningún lugar es mejor que nuestro hogar.\n\n` +
-`Hoy, ver nuestro apartamento amueblado con esfuerzo, nuestras cosas compradas a pulso y saber que somos equipo, en cada fiesta familiar y en cada viaje, es mi mayor orgullo. \n\n` +
-`Gracias por no rendirte cuando éramos difíciles, por ayudarme a ser mi mejor versión y por construir este "nosotros" que hoy es inquebrantable. \n\n` +
-`Te amo para siempre. ❤️`;
+    `Hoy, ver nuestro apartamento amueblado con esfuerzo, nuestras cosas compradas a pulso y saber que somos equipo, en cada fiesta familiar y en cada viaje, es mi mayor orgullo. \n\n` +
+    `Gracias por no rendirte cuando éramos difíciles, por ayudarme a ser mi mejor versión y por construir este "nosotros" que hoy es inquebrantable. \n\n` +
+    `Te amo para siempre. ❤️`;
 
   const messageEl = document.getElementById("message");
   messageEl.textContent = "";
@@ -244,19 +259,19 @@ function crearParticulas() {
   }
 }
 function actualizarContador() {
-    const fechaInicio = new Date('2022-01-30T00:00:00');
-    const ahora = new Date();
-    
-    const diferencia = ahora - fechaInicio;
+  const fechaInicio = new Date('2022-01-30T00:00:00');
+  const ahora = new Date();
 
-    // Cálculos de tiempo
-    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
-    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
-    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+  const diferencia = ahora - fechaInicio;
 
-    // Formato de salida
-    const contadorHTML = `
+  // Cálculos de tiempo
+  const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+  const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+  const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+  // Formato de salida
+  const contadorHTML = `
         <div class="contador-container">
             <span class="dias-grande">${dias} días juntos.</span>
             <div class="tiempo-detalle">
@@ -266,10 +281,10 @@ function actualizarContador() {
         </div>
     `;
 
-    const contenedor = document.getElementById('contador-amor');
-    if (contenedor) {
-        contenedor.innerHTML = contadorHTML;
-    }
+  const contenedor = document.getElementById('contador-amor');
+  if (contenedor) {
+    contenedor.innerHTML = contadorHTML;
+  }
 }
 
 // Actualizar cada segundo para que se vea el movimiento

@@ -168,67 +168,49 @@
       </div>
     </section>
 
-    <section class="carrusel-seccion" data-seccion="3">
-      <p class="glow-title">Un momento especial</p>
+    <!-- SECCIÓN VIDEO PROPUESTA -->
+<section class="carrusel-seccion" data-seccion="3">
+  <p class="glow-title" style="font-size: 1.8rem; line-height: 1.2;">
+    Bajo el cielo de Cartagena... <br>
+    el inicio de nuestro "Para Siempre". ✨
+  </p>
 
-      <div class="video-contenedor-especial">
-        <!-- Quitamos el autoplay para que ella le de Play o lo controlamos por JS -->
-        <video id="videoIntermedio" playsinline controls style="width: 100%; border-radius: 15px;">
-          <source src="pictures/video_propuesta.MP4" type="video/mp4">
-        </video>
-        
-        <!-- Agregamos el onclick manual para asegurar que funcione -->
-        <button id="btnVideoSiguiente" class="btn-generic" onclick="avanzarALaSeccion4()" style="display: none; margin-top: 20px;">
-          Continuar a nuestro último capítulo... ✍🏼
-        </button>
-      </div>
-    </section>
-
-  </div>
-  <div class="pantalla" id="pantalla4">
-    <video autoplay muted loop playsinline class="background-video">
-      <source src="pictures/video_fondo.mp4" type="video/mp4">
-      Tu navegador no soporta videos embebidos.
+  <div class="video-contenedor-especial">
+    <!-- Verifica si el archivo es 'propuesta.MP4' o 'video_propuesta.MP4' -->
+    <video id="videoIntermedio" playsinline muted style="width: 100%; border-radius: 15px; background: black;">
+      <source src="pictures/video_propuesta.MP4" type="video/mp4">
     </video>
 
-    <div class="video-overlay"></div>
-
-    <div class="glass-container" style="max-height: 80vh; overflow-y: auto;">
-      <p id="message" class="mensaje-final"></p>
-      <button id="readButton" class="btn-generic" onclick="finishMessage()" style="display:none; margin-top: 20px;">
-        Siguiente...
-      </button>
-    </div>
+    <button id="btnVideoSiguiente" class="btn-generic" onclick="avanzarALaSeccion4()" style="display: none; margin-top: 20px;">
+      Continuar a nuestro último capítulo... ✍🏼
+    </button>
   </div>
-  <div class="pantalla" id="pantalla5">
+</section>
 
-    <div class="img-fondo-borrosa" style="background-image: url('pictures/f7_c1.jpeg');"></div>
-    <div class="glass-container">
-      <p id="message" class="mensaje-final"></p>
-
-      <!-- Aquí aparecerá el contador -->
-      <div id="contador-amor"></div>
-
-      <button id="readButton" class="btn-generic" onclick="finishMessage()" style="display:none;">
-        Siguiente...
-      </button>
-    </div>
+<!-- PANTALLA 4: LA CARTA -->
+<div class="pantalla" id="pantalla4">
+  <video autoplay muted loop playsinline class="background-video">
+    <source src="pictures/video_fondo.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+  <div class="glass-container">
+    <p id="message" class="mensaje-final"></p>
+    <button id="readButton" class="btn-generic" onclick="siguientePantalla(5)" style="display:none; margin-top: 20px;">
+      Siguiente...
+    </button>
   </div>
+</div>
 
-  <div class="pantalla" id="pantalla6">
-    <div class="img-fondo-full" style="background-image: url('pictures/IMG_FINAL.jpg');"></div>
-    <div class="overlay-final"></div>
-
-    <div class="contenido-final">
-      <h2 class="glow-title">
-        Gracias por no rendirte y por enseñarme que el amor de verdad vale cualquier cambio. Espero que este pequeño detalle te haya recordado lo mucho que te amo.<br><br>
-        ¡FELIZ MES! 
-      </h2>
-      <button class="btn-generic" onclick="cerrarProyecto();">
-        Finalizar❤️
-      </button>
-    </div>
+<!-- PANTALLA 5: EL CONTADOR -->
+<div class="pantalla" id="pantalla5">
+  <div class="img-fondo-borrosa" style="background-image: url('pictures/f7_c1.jpeg');"></div>
+  <div class="glass-container">
+    <div id="contador-amor"></div>
+    <button class="btn-generic" onclick="siguientePantalla(6)" style="margin-top: 20px;">
+      Ver mensaje final ❤️
+    </button>
   </div>
+</div>
 
   <audio id="backgroundAudio" loop>
     <source src="pictures/musica.mpeg" type="audio/mpeg">
