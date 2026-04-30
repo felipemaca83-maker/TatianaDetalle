@@ -3,8 +3,8 @@ window.onload = () => {
   crearParticulas();
 };
 
-// --- NAVEGACIÓN ENTRE PANTALLAS ---
 function siguientePantalla(n) {
+  reproducirMusica();
   const actuales = document.querySelectorAll('.pantalla');
   actuales.forEach(p => {
     p.classList.remove('activa');
@@ -15,11 +15,17 @@ function siguientePantalla(n) {
   if (proxima) {
     proxima.classList.add('activa');
     proxima.style.display = 'flex';
-  }
 
-  // Activar música al entrar a los carruseles (Pantalla 3)
-  if (n === 3) {
-    reproducirMusica();
+    // --- EL TRUCO ESTÁ AQUÍ ---
+    if (n === 4) {
+      // Si entramos a la pantalla 4, esperamos un segundo y arrancamos las letras
+      setTimeout(iniciarTexto, 500); 
+    }
+    
+    if (n === 5) {
+      // Si entramos a la 5, activamos el contador de días
+      setInterval(actualizarContador, 1000);
+    }
   }
 }
 
@@ -27,18 +33,22 @@ function siguientePantalla(n) {
 function reproducirMusica() {
   const audio = document.getElementById("backgroundAudio");
   if (audio && audio.paused) {
-    audio.volume = 0;
+    audio.volume = 0; // Empezamos en silencio
     audio.play().then(() => {
+      // Efecto de subida gradual (Fade In)
       let vol = 0;
       const fadeIn = setInterval(() => {
-        if (vol < 0.5) {
+        if (vol < 0.4) { // Volumen máximo 40%
           vol += 0.05;
           audio.volume = vol;
         } else {
           clearInterval(fadeIn);
         }
-      }, 150);
-    }).catch(err => console.error("Error audio:", err));
+      }, 200);
+    }).catch(err => {
+      // Esto solo pasará si el usuario no ha tocado nada aún
+      console.log("Esperando interacción para sonar...");
+    });
   }
 }
 
@@ -148,41 +158,24 @@ const videoIntermedio = document.getElementById('videoIntermedio');
 const btnVideoSiguiente = document.getElementById('btnVideoSiguiente');
 
 if (videoIntermedio) {
-  // Cuando el video termine, muestra el botón
   videoIntermedio.onended = function () {
     btnVideoSiguiente.style.display = "block";
     btnVideoSiguiente.scrollIntoView({ behavior: 'smooth' });
   };
 }
 
-// Función única para saltar a la carta
+// Esta es la función que debe llamar el botón del video
 function avanzarALaSeccion4() {
-  if (videoIntermedio) videoIntermedio.pause();
-  siguientePantalla(4); 
+  videoIntermedio.pause();
+  siguientePantalla(4); // Salta directamente a la carta
 }
-
-// Modifica tu función siguientePantalla para que inicie la carta y el contador
-function siguientePantalla(n) {
-  const actuales = document.querySelectorAll('.pantalla');
-  actuales.forEach(p => {
-    p.classList.remove('activa');
-    p.style.display = 'none';
-  });
-
-  const proxima = document.getElementById('pantalla' + n);
-  if (proxima) {
-    proxima.classList.add('activa');
-    proxima.style.display = 'flex';
-    
-    // Si entramos a la pantalla 4, arranca la máquina de escribir
-    if (n === 4) {
-      iniciarTexto();
-    }
-    // Si entramos a la pantalla 5, arranca el contador
-    if (n === 5) {
-      setInterval(actualizarContador, 1000);
-    }
-  }
+// --- TRANSICIÓN A PANTALLA FINAL (VIDEO) ---
+function irAlFinal() {
+  document.getElementById('pantalla3').style.display = 'none';
+  const p4 = document.getElementById('pantalla4');
+  p4.classList.add('activa');
+  p4.style.display = 'flex';
+  iniciarTexto();
 }
 
 // --- EFECTO MÁQUINA DE ESCRIBIR ---
