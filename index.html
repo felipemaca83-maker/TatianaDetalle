@@ -175,9 +175,10 @@
 
       <div class="video-contenedor-especial">
         <!-- Quitamos el autoplay para que ella le de Play o lo controlamos por JS -->
-        <video id="videoIntermedio" playsinline controls style="width: 100%; border-radius: 15px;">
-          <source src="pictures/video_propuesta.mp4" type="video/mp4">
-        </video>
+        <video id="videoIntermedio" playsinline muted controls preload="auto" style="width: 100%; border-radius: 15px; background: black;">
+    <source src="pictures/video_propuesta.MP4" type="video/mp4">
+    Tu navegador no soporta video.
+</video>
 
         <!-- Agregamos el onclick manual para asegurar que funcione -->
         <button id="btnVideoSiguiente" class="btn-generic" onclick="avanzarALaSeccion4()"
@@ -235,9 +236,9 @@
     </div>
   </div>
 
-  <audio id="backgroundAudio" loop>
+  <!-- <audio id="backgroundAudio" loop>
     <source src="pictures/musica.mpeg" type="audio/mpeg">
-  </audio>
+  </audio> -->
   <script src="script.js"></script>
 
 </body>
