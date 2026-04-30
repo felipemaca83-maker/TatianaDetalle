@@ -1,0 +1,418 @@
+/* --- VARIABLES Y BASE --- */
+:root {
+  --primary: #ff758c;
+  --secondary: #ff7eb3;
+  /* Color de cristal: Muy transparente con un toque de blanco */
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  /* Borde tipo espejo: blanco más sólido para simular el borde del vidrio */
+  --glass-border: rgba(255, 255, 255, 0.4);
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+/* --- CONTENEDORES GLOBALES --- */
+.pantalla {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ajustamos el margen del botón para cuando está fuera del cuadro */
+.pantalla>.btn-generic {
+  margin-top: 40px;
+  /* Separación del cuadro de cristal */
+}
+
+.pantalla.activa {
+  display: flex;
+  animation: fadeInScreen 1s ease forwards;
+}
+
+.glass-container {
+  background: var(--glass-bg);
+  /* El blur es la clave del efecto espejo */
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+
+  border: 1px solid var(--glass-border);
+  border-radius: 40px;
+  padding: 40px 20px;
+
+  /* Sombra suave para dar profundidad */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 85%;
+  max-width: 380px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* --- BOTONES --- */
+.btn-generic {
+  background: linear-gradient(to right, #ff758c, #ff7eb3);
+  border: none;
+  padding: 15px 50px;
+  color: white;
+  border-radius: 50px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(255, 117, 140, 0.4);
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  z-index: 20;
+}
+
+.btn-generic:hover {
+  transform: scale(1.05);
+}
+
+.btn-pulse {
+  animation: pulse 2s infinite;
+}
+
+/* --- TÍTULOS --- */
+.glow-title {
+  text-align: center;
+  animation: glow 2s ease-in-out infinite alternate;
+}
+
+#pantalla1 .glow-title {
+  position: relative;
+  top: -20px;
+  margin-bottom: 10px;
+  font-size: 3.5rem;
+  z-index: 10;
+}
+
+#pantalla3 .glow-title {
+  font-size: 1.8rem;
+  /* Tamaño reducido para los capítulos */
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+/* --- CARRUSEL Y SLIDES --- */
+.carrusel-seccion {
+  display: none;
+  opacity: 0;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.carrusel-seccion.visible {
+  display: flex;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.carrusel-seccion .btn-generic {
+  font-size: 1.2rem;
+  /* Más pequeño solo dentro de los carruseles */
+  padding: 8px 25px;
+  margin-top: 10px;
+}
+
+.carrusel {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  min-height: 500px;
+  background: transparent;
+}
+.video-contenedor-especial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px; /* Ajusta según el tamaño de tu video */
+  margin: 0 auto;
+}
+
+#videoIntermedio {
+  width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  margin-bottom: 20px;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  position: relative;
+}
+
+.slide.activa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slide img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.info-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 25px 15px 50px 15px;
+  box-sizing: border-box;
+  z-index: 10;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* --- DOTS --- */
+.dots {
+  margin: 15px 0 25px 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.dot.activa {
+  background: var(--primary);
+  transform: scale(1.4);
+  box-shadow: 0 0 10px var(--primary);
+}
+
+/* --- PANTALLA 4 (VIDEO Y MÁQUINA DE ESCRIBIR) --- */
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+#pantalla4 .glass-container {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.mensaje-final,
+.info-slide {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  font-size: 1.6rem;
+  text-align: center;
+  white-space: pre-wrap; /* ESTO ES LO QUE PERMITE LOS SALTOS DE LÍNEA */
+    line-height: 1.2;
+  /* Centra las líneas de texto */
+  display: block;
+  width: 100%;
+  /* Asegura que ocupe todo el ancho del cuadro de cristal */
+  margin: 0 auto;
+}
+
+/* ... (todo lo anterior igual hasta llegar a Pantallas Finales) ... */
+
+.info-slide-externo {
+  width: 85%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+  transition: opacity 0.3s ease;
+}
+
+.info-slide-externo span {
+  transition: opacity 0.4s ease-in-out;
+  display: block;
+  /* Para que la opacidad afecte bien al bloque */
+}
+
+.overlay-final {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+  z-index: 5;
+  pointer-events: none;
+  /* ESTO ARREGLA EL BOTÓN FINAL */
+}
+
+.contenido-final {
+  position: relative;
+  z-index: 10;
+  /* Por encima del overlay */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+/* --- PANTALLAS FINALES (5 Y 6) --- */
+.img-fondo-borrosa,
+.img-fondo-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: -1;
+}
+
+.img-fondo-borrosa {
+  filter: blur(8px);
+}
+
+.mensaje-cursivo {
+  font-family: 'Caveat', cursive;
+  font-weight: 600;
+  /* Esto activa la semi-negrita */
+  font-size: 2.5rem;
+  /* Un poco más grande para que luzca el trazo */
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* Sombra para que resalte sobre el fondo */
+}
+
+.overlay-final {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, transparent 50%);
+  z-index: 0;
+}
+
+/* --- ELEMENTOS DE APOYO (PARTÍCULAS Y OTROS) --- */
+.glass-box {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px;
+}
+
+.particle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  z-index: 0;
+  animation: float infinite linear;
+}
+
+/* --- ANIMACIONES --- */
+@keyframes float {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.8;
+  }
+
+  90% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(30px);
+    opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 117, 140, 0.7);
+  }
+
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 15px rgba(255, 117, 140, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 117, 140, 0);
+  }
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px var(--primary);
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px var(--secondary);
+  }
+}
+
+@keyframes fadeInScreen {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

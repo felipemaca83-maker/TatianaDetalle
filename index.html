@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Ti 💙</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+
+  </style>
+</head>
+
+<body>
+
+  <div id="pantalla1" class="pantalla activa">
+    <div class="glass-container">
+      <h1 class="glow-title">Hola mamasota</h1>
+      <p style="font-size: 1.2rem; margin: 20px 0; text-align: center;">
+        He preparado algo especial para ti... <br>
+        Espero que te guste, es con mucho cariño. ❤️
+      </p>
+    </div>
+    <button class="btn-generic btn-pulse" onclick="siguientePantalla(2)">
+      Empezar ✨
+    </button>
+  </div>
+
+  <div id="pantalla2" class="pantalla">
+    <div id="prep-particles" style="position:absolute; width:100%; height:100%; z-index: -1;"></div>
+
+    <h1 class="glow-title" style="font-size: 2.2rem; text-align: center; padding: 0 20px; margin-bottom: 20px;">
+      Importante:
+    </h1>
+
+    <div class="glass-box">
+      <p style="font-family: 'Georgia', serif; font-size: 1.1rem; line-height: 1.6; color: #f0f0f0;">
+        Antes de comenzar, unas pequeñas recomendaciones:
+      </p>
+      <ul style="list-style: none; padding: 0; font-size: 1rem; line-height: 2; text-align: left;">
+        <li>📍 Busca un lugar tranquilo.</li>
+        <li>🤫 Asegúrate de que no haya mucho ruido.</li>
+        <li>☀️ Sube un poco el brillo de tu pantalla.</li>
+        <li>🔊 Ajusta el volumen.</li>
+      </ul>
+      <p style="text-align: center; font-style: italic; margin-top: 20px; color: var(--secondary);">
+        Disfruta, es con mucho cariño. ❤️
+      </p>
+    </div>
+
+    <button class="btn-generic btn-pulse" onclick="siguientePantalla(3)">
+      ¡Estoy lista!
+    </button>
+  </div>
+
+  <!-- Pantalla 3 -->
+  <div class="pantalla" id="pantalla3">
+
+    <section class="carrusel-seccion visible" data-seccion="1">
+      <p class="glow-title">Capítulo 1</p>
+
+      <div class="info-slide-externo">
+        <span id="texto-dinamico-1">✨</span>
+      </div>
+
+      <div class="carrusel">
+        <div class="slide activa">
+          <img src="picture/indicacion.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/inicio.jpeg" alt="Foto">
+          <div class="info-slide">
+          </div>
+        </div>
+
+
+        <div class="slide">
+          <img src="picture/f1_c1.jpeg" alt="Foto">
+          <div class="info-slide">
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="picture/f2_c1.jpeg" alt="Foto">
+          <div class="info-slide">
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="picture/f3_c1.jpeg" alt="Foto">
+          <div class="info-slide">
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="picture/f4_c1.jpeg" alt="Foto">
+          <div class="info-slide">
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="picture/f5_c1.jpeg" alt="Foto">
+          <div class="info-slide">
+          </div>
+        </div>
+
+        <div class="slide">
+          <img src="picture/f6_c1.jpeg" alt="Foto">
+          <div class="info-slide">
+          </div>
+          <button class="btn-generic siguiente-carrusel">Siguiente Capítulo</button>
+        </div>
+
+        <div class="dots"></div>
+
+      </div>
+    </section>
+
+    <section class="carrusel-seccion" data-seccion="2">
+      <p class="glow-title">Capítulo 2</p>
+
+      <div class="info-slide-externo">
+        <span>Todo empezó con alguien que, sin saberlo, se convertiría en mi mundo... ✨</span>
+      </div>
+
+      <div class="carrusel">
+        <div class="slide activa">
+          <img src="picture/f1_c2.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f2_c2.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f3_c2.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f4_c2.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f5_c2.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f7_c2.jpeg" alt="Foto">
+          <button class="btn-generic siguiente-carrusel">Continuar... ✍🏼</button>
+        </div>
+
+        <div class="dots"></div>
+      </div>
+    </section>
+
+    <section class="carrusel-seccion" data-seccion="3">
+  <p class="glow-title">Un momento especial</p>
+  
+  <div class="video-contenedor-especial">
+    <video id="videoIntermedio" playsinline>
+      <source src="pictures/propuesta.MP4" type="video/mp4">
+    </video>
+    <button id="btnVideoSiguiente" class="btn-generic siguiente-seccion" style="display: none;">
+      Continuar a nuestro último capítulo... ✍🏼
+    </button>
+  </div>
+</section>
+
+<section class="carrusel-seccion" data-seccion="4">
+  <p class="glow-title">Capítulo Final</p>
+  </section>
+
+    <section class="carrusel-seccion" data-seccion="4">
+      <p class="glow-title">Capítulo 3</p>
+      <div class="info-slide-externo">
+        <span id="texto-dinamico-1">Y por fin, el 'nosotros' se hizo oficial ante el mundo... 🥂</span>
+      </div>
+      <div class="carrusel">
+
+        <div class="slide activa">
+          <img src="picture/f1_c3.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f2_c3.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f3_c3.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f4_c3.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f5_c3.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f6_c3.jpeg" alt="Foto">
+        </div>
+
+
+        <div class="slide">
+          <img src="picture/f7_c3.jpeg" alt="Foto">
+        </div>
+
+        <div class="slide">
+          <img src="picture/f8_c3.jpeg" alt="Foto">
+          <button class="btn-generic" onclick="irAlFinal()">Antes de terminar...</button>
+        </div>
+
+        <div class="dots"></div>
+      </div>
+    </section>
+  </div>
+  <div class="pantalla" id="pantalla4">
+    <video autoplay muted loop playsinline class="background-video">
+      <source src="picture/video_final.MP4" type="video/mp4">
+      Tu navegador no soporta videos embebidos.
+    </video>
+
+    <div class="video-overlay"></div>
+
+    <div class="glass-container" style="max-height: 80vh; overflow-y: auto;">
+      <p id="message" class="mensaje-final"></p>
+      <button id="readButton" class="btn-generic" onclick="finishMessage()" style="display:none; margin-top: 20px;">
+        Siguiente...
+      </button>
+    </div>
+  </div>
+  <div class="pantalla" id="pantalla5">
+    <div class="img-fondo-borrosa" style="background-image: url('picture/f4_c3.jpeg');"></div>
+    <div class="glass-container">
+      <p class="mensaje-cursivo">
+        "Porque nuestro mejor capítulo es el que estamos viviendo hoy, y el que mañana está por venir."
+      </p>
+    </div>
+  </div>
+
+  <div class="pantalla" id="pantalla6">
+    <div class="img-fondo-full" style="background-image: url('picture/f3_c3.jpeg');"></div>
+    <div class="overlay-final"></div>
+
+    <div class="contenido-final">
+      <h2 class="glow-title">Gracias por existir</h2>
+      <button class="btn-generic" onclick="cerrarProyecto();">
+        Finalizar❤️
+      </button>
+    </div>
+  </div>
+
+  <audio id="backgroundAudio" loop>
+    <source src="picture/musica.mpeg" type="audio/mpeg">
+  </audio>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
