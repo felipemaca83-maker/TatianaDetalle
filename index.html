@@ -168,29 +168,30 @@
       </div>
     </section>
 
-<!-- SECCIÓN 3: EL VIDEO (Muteado) -->
-<section class="carrusel-seccion" data-seccion="3">
-<p class="glow-title" style="font-size: 1.8rem; line-height: 1.2;">
-    Bajo el cielo de Cartagena... <br>
-    el inicio de nuestro "Para Siempre". ✨
-  </p>
+    <section class="carrusel-seccion" data-seccion="3">
+      <p class="glow-title" style="font-size: 1.8rem; line-height: 1.2;">
+        Bajo el cielo de Cartagena... <br>
+        el inicio de nuestro "Para Siempre". ✨
+      </p>
+          <!-- <button class="btn-generic" onclick="irAlFinal()">Antes de terminar...</button> -->
 
-  <div class="video-contenedor-especial">
-    <!-- Agregamos 'muted' y quitamos 'controls' si quieres que se vea más limpio -->
-    <video id="videoIntermedio" playsinline muted style="width: 100%; border-radius: 15px;">
-      <source src="pictures/propuesta.MP4" type="video/mp4">
-    </video>
-    
-    <button id="btnVideoSiguiente" class="btn-generic" onclick="avanzarALaSeccion4()" style="display: none; margin-top: 20px;">
-      Antes de terminar...
-    </button>
-  </div>
-</section>
-    
+      <div class="video-contenedor-especial">
+        <video id="videoIntermedio" playsinline muted style="width: 100%; border-radius: 15px;">
+          <source src="pictures/propuesta.MP4" type="video/mp4">
+        </video>
+
+        <button id="btnVideoSiguiente" class="btn-generic" onclick="avanzarALaSeccion4()"
+          style="display: none; margin-top: 20px;">
+          Antes de terminar...
+        </button>
+      </div>
+      
+    </section>
+
   </div>
   <div class="pantalla" id="pantalla4">
     <video autoplay muted loop playsinline class="background-video">
-      <source src="picture/video_final.MP4" type="video/mp4">
+      <source src="pictures/video_fondo.mp4" type="video/mp4">
       Tu navegador no soporta videos embebidos.
     </video>
 
@@ -204,20 +205,29 @@
     </div>
   </div>
   <div class="pantalla" id="pantalla5">
-    <div class="img-fondo-borrosa" style="background-image: url('picture/f4_c3.jpeg');"></div>
+
+    <div class="img-fondo-borrosa" style="background-image: url('pictures/f7_c1.jpeg');"></div>
     <div class="glass-container">
-      <p class="mensaje-cursivo">
-        "Porque nuestro mejor capítulo es el que estamos viviendo hoy, y el que mañana está por venir."
-      </p>
+      <p id="message" class="mensaje-final"></p>
+
+      <!-- Aquí aparecerá el contador -->
+      <div id="contador-amor"></div>
+
+      <button id="readButton" class="btn-generic" onclick="finishMessage()" style="display:none;">
+        Siguiente...
+      </button>
     </div>
   </div>
 
   <div class="pantalla" id="pantalla6">
-    <div class="img-fondo-full" style="background-image: url('picture/f3_c3.jpeg');"></div>
+    <div class="img-fondo-full" style="background-image: url('pictures/IMG_FINAL.jpg');"></div>
     <div class="overlay-final"></div>
 
     <div class="contenido-final">
-      <h2 class="glow-title">Gracias por existir</h2>
+      <h2 class="glow-title">
+        Gracias por no rendirte y por enseñarme que el amor de verdad vale cualquier cambio. Espero que este pequeño detalle te haya recordado lo mucho que te amo.<br><br>
+        ¡FELIZ MES! 
+      </h2>
       <button class="btn-generic" onclick="cerrarProyecto();">
         Finalizar❤️
       </button>
@@ -225,7 +235,7 @@
   </div>
 
   <audio id="backgroundAudio" loop>
-    <source src="picture/musica.mpeg" type="audio/mpeg">
+    <source src="pictures/musica.mpeg" type="audio/mpeg">
   </audio>
   <script src="script.js"></script>
 

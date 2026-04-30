@@ -357,6 +357,35 @@ html {
   animation: float infinite linear;
 }
 
+.contador-container {
+    margin-top: 25px;
+    padding: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 2s ease;
+}
+
+.dias-grande {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ff758c;
+    text-shadow: 0 0 10px rgba(255, 117, 140, 0.5);
+    font-family: 'Caveat', cursive;
+}
+
+.tiempo-detalle {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    color: #f0f0f0;
+    margin: 5px 0;
+}
+
+.contador-leyenda {
+    font-size: 0.9rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
 /* --- ANIMACIONES --- */
 @keyframes float {
   0% {

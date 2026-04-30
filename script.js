@@ -178,19 +178,14 @@ function irAlFinal() {
 
 // --- EFECTO MÁQUINA DE ESCRIBIR ---
 function iniciarTexto() {
-  const messageText = `En definitiva... 
-
-Nuestra historia es mi favorita. ✨ 
-
-Todo empezó en ese salón de clases, entre apuntes y risas compartidas, sin imaginar que el destino nos estaba sentando en el mismo camino. Fuimos mejores amigos, el apoyo del otro cuando el mundo afuera parecía complicado. 
-
-Pasamos por tormentas, sanamos heridas de pasados que dolieron y nos acompañamos en el proceso de volver a encontrarnos a nosotros mismos. 
-
-Pero el destino es curioso... y una noche, entre copas y risas, esos celos inesperados nos delataron. Fue el momento en que nuestras miradas cambiaron y entendimos que lo que sentíamos ya no cabía en la palabra "amistad". 🥰
-
-Desde ahí, cada salida, cada concierto, cada picnic y cada detalle se volvió un motivo más para elegirte. Gracias por ser mi lugar seguro, por transformar los días grises en momentos llenos de color y por permitirme escribir este cuento contigo. 🫶🏽
-
-Te quiero, hoy y siempre. ❤️`;
+const messageText = `Mirar atrás es ver cuánto hemos construido. \n\n
+Empezamos siendo dos tormentas que chocaban, con temperamentos iguales y miedos que a veces nos hacían dudar. \n\n
+Perdimos la cuenta de las veces que las lágrimas ganaron y de los momentos en que parecía que el orgullo nos separaría.\n\n` +
+`Pero tú, que decías que nunca buscarías a nadie, terminaste siendo la razón por la que yo decidí cambiarlo todo. \n\n
+Dejé atrás las noches vacías por la paz de despertar a tu lado. Cambié mi mundo porque entendí que ningún lugar es mejor que nuestro hogar.\n\n` +
+`Hoy, ver nuestro apartamento amueblado con esfuerzo, nuestras cosas compradas a pulso y saber que somos equipo, en cada fiesta familiar y en cada viaje, es mi mayor orgullo. \n\n` +
+`Gracias por no rendirte cuando éramos difíciles, por ayudarme a ser mi mejor versión y por construir este "nosotros" que hoy es inquebrantable. \n\n` +
+`Te amo para siempre. ❤️`;
 
   const messageEl = document.getElementById("message");
   messageEl.textContent = "";
@@ -234,7 +229,7 @@ function finishMessage() {
 
 function cerrarProyecto() {
   console.log("Botón finalizar presionado");
-  alert("Gracias por leer hasta el final. ¡Te quiero mucho! ❤️");
+  alert("Eres mi mejor decisión, hoy y siempre. ❤️");
 }
 
 // --- SISTEMA DE PARTÍCULAS ---
@@ -254,3 +249,34 @@ function crearParticulas() {
     container.appendChild(p);
   }
 }
+function actualizarContador() {
+    const fechaInicio = new Date('2022-01-30T00:00:00');
+    const ahora = new Date();
+    
+    const diferencia = ahora - fechaInicio;
+
+    // Cálculos de tiempo
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((diferencia % (1000 * 60)) / 1000);
+
+    // Formato de salida
+    const contadorHTML = `
+        <div class="contador-container">
+            <span class="dias-grande">${dias} días juntos.</span>
+            <div class="tiempo-detalle">
+                ${horas}h ${minutos}m ${segundos}s
+            </div>
+            <p class="contador-leyenda">Escribiendo nuestra historia desde el 30.01.2022</p>
+        </div>
+    `;
+
+    const contenedor = document.getElementById('contador-amor');
+    if (contenedor) {
+        contenedor.innerHTML = contadorHTML;
+    }
+}
+
+// Actualizar cada segundo para que se vea el movimiento
+setInterval(actualizarContador, 1000);
