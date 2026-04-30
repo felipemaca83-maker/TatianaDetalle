@@ -76,15 +76,30 @@ document.querySelectorAll(".carrusel-seccion").forEach(seccion => {
 
       // 2. Definimos los textos por sección
       const textosPorSeccion = {
-        "1": ["Aqui va una indicacion", "💬", "Y pensar que nuestra vida cambió con un solo \"Hola\"... 💬", "Desde ese instante, sin saberlo, algo mágico empezó a crecer.", "Nuestras charlas se volvieron refugio y nuestra historia comenzó a escribirse.", "Poco a poco, esa conexión se hizo más fuerte que la distancia y el tiempo.", "Y sin entenderlo del todo en ese momento... El destino ya nos estaba trazando el camino para encontrarnos. ❤️", "Aquel cuento que leímos... esa historia que nos hizo detenernos a pensar."],
+        "1": [
+    "Esas primeras noches donde el mundo se detenía entre luces y música. ✨", // Foto 1: Beso discoteca
+    "Nuestra complicidad siempre fue nuestra mejor cara. 🤪",                 // Foto 2: Caritas discoteca
+    "Repitiendo lugares, pero creando momentos totalmente nuevos.",          // Foto 3: Discoteca otra fecha
+    "Gozando de fiestas y risas, con el corazón más feliz que nunca. 🎤", // Foto 4: Concierto/Feria
+    "Tu espejo sabe bien cuántas sonrisas me robaste desde el principio. 🤳✨", // Foto 5: Espejo habitación
+    "Citas sencillas, hamburguesas y la mejor compañía del universo.",       // Foto 6: Restaurante
+    "Nuestro primer cierre de año... y el inicio de nuestra vida juntos. ❤️"        // Foto 7: Primer 31 de diciembre
+],
         "2": [
-          "Esa primera vez que vibramos al mismo ritmo, entre luces y música.",       // Concierto
-          "Descubrimos que los momentos más sencillos eran nuestros favoritos...",    // Picnic 1
-          "Días de sol, tranquilidad y esa paz que solo sentía estando a tu lado.",    // Picnic 2
-          "Poco a poco, el 'tú' y el 'yo' se fue transformando en un 'nosotros'.",    // Picnic 3
-          "Compartiendo risas, cenas y confesiones que nos hacían más cercanos.",      // Restaurante
-          "Aún no había etiquetas, pero mi corazón ya sabía que eras tú. ❤️"          // Cierre sección
-        ],
+    "Celebrar mi vida fue el mejor regalo que me dio ese año. 🎂",             // Foto 1: Cumpleaños de él
+    "Un año más para ti, pero esta vez, con el amor de mi vida al lado. ✨",          // Foto 2: Cumpleaños de ella
+    "Bajo el calor del Valle, descubriendo que cualquier lugar es perfecto contigo.", // Foto 3: Cali
+    "Otro diciembre sumando momentos y brindando por nosotros. 🥂",           // Foto 4: Segundo diciembre
+    "Cruzando fronteras y coleccionando sellos en el corazón. 🇪🇨",            // Foto 5: Límite Ecuador
+    "Aventureros por naturaleza, cómplices por elección.",                    // Foto 6: Ecuador
+    "Caminando la capital, sintiendo que el frío de Bogotá no existía si me dabas la mano. 🏙️", // Foto 7: Bogotá Plaza
+    "Tocando el cielo en Monserrate, pero sintiendo los pies en la tierra porque estaba a tu lado. ✨",
+    "Momentos que se vuelven hogar, compartiendo lo que más queremos. 🏡",      // Foto 9: Selfie con los suegros (campo)
+    "Tú, yo y la paz de estar donde pertenecemos. ❤️",                        // Foto 10: Selfie solos (campo)
+    "Donde el mar nos susurró que esto era para siempre. 🌊",                  // Foto 11: Playa Tumaco
+    "Besos con sabor a sal y arena, en nuestro paraíso personal. 💋",          // Foto 12: Beso Tumaco
+    "Cerrando capítulos en el lago Calima, agradecido por cada aventura a tu lado. ⛵" // Foto 13: Lago Calima
+],
         "3": [
           "Y por fin, el 'nosotros' se hizo oficial ante el mundo... 🥂",          // Foto 1: Beso restaurante
           "Ver tu sonrisa iluminarse con ese detalle fue mi mejor regalo. 💐",    // Foto 2: Ella con flores
@@ -128,23 +143,28 @@ document.querySelectorAll(".carrusel-seccion").forEach(seccion => {
   }
 });
 
-const videoEspecial = document.getElementById('videoIntermedio');
-const btnSiguiente = document.getElementById('btnVideoSiguiente');
+// 1. Detectar cuando termina el video
+const videoIntermedio = document.getElementById('videoIntermedio');
+const btnVideoSiguiente = document.getElementById('btnVideoSiguiente');
 
-// Detectar cuando el video termina
-videoEspecial.onended = function () {
-  btnSiguiente.style.display = "block"; // Mostramos el botón
-  btnSiguiente.classList.add("fadeInAnim"); // Una pequeña animación de entrada
-};
+if (videoIntermedio) {
+    videoIntermedio.onended = function() {
+        btnVideoSiguiente.style.display = "block";
+        // Opcional: scroll automático hacia el botón para que lo vea
+        btnVideoSiguiente.scrollIntoView({ behavior: 'smooth' });
+    };
+}
 
-// Opcional: Si quieres que el video se reproduzca solo cuando entren a esa sección
-function checkVideoPlay(n) {
-  if (n === 3) {
-    videoEspecial.play();
-  } else {
-    videoEspecial.pause();
-    videoEspecial.currentTime = 0; // Reiniciar si salen de la sección
-  }
+// 2. Función para saltar del video a las fotos finales
+function avanzarALaSeccion4() {
+    // Ocultamos la sección 3
+    document.querySelector('[data-seccion="3"]').classList.remove('visible');
+    // Mostramos la sección 4
+    const seccion4 = document.querySelector('[data-seccion="4"]');
+    seccion4.classList.add('visible');
+    
+    // Pausamos el video por si acaso seguía sonando algo
+    videoIntermedio.pause();
 }
 
 // --- TRANSICIÓN A PANTALLA FINAL (VIDEO) ---
